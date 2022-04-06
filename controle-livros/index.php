@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="./css/index.css">
-	
-	<title>Index</title>
+
+    <title>Index</title>
 </head>
+
 <body>
-	<?php
+    <?php
 	include_once 'conexao.php';
 
 	$_SESSION['acao'] = $_POST['acao'] ?? '';
@@ -45,35 +48,39 @@
 	}
 	
 	?>
-	<?php
+    <?php
 	include_once 'conexao.php';
-	include_once 'navbar.php';	
+	include_once '../assets/navbar-principal.php';	
 	?>
-	<h1 class="principal display-4 texte-center text-white">Menu Principal </h1>
-	<p class="lead text-center text-white"> Este sistema faz o cadastro de livros e a sua manutenção. 
-		Também permite registrar o entrada e saída de livros.</p>		
-	<div class="container">
-		<form action="index.php" method="POST" >
-				<div class="form-group pt-4 row justify-content-center">
-					<div class="col-sm-3">
-						<div class="shadow  bg-white rounded">
-						<input type="codigo" name="codigo" class="form-control" id="codigo1" aria-describedby="emailHelp" placeholder="Insira o código do livro " required>
-					</div>
-				</div>
-			</div>
-			<div class="class text-center pt-4">
-				<div class="btn-group " role="group" aria-label="Toolbar com grupos de botões">
-					<button  class="btn btn-dark" name="acao" value='Incluir Livros'>Incluir Livros</button>
-					<button class="btn btn-dark" name="acao" value='Alterar Livros'>Alterar Livros</button>
-					<button  class="btn btn-dark" name="acao" value='Excluir Livros'>Excluir Livros</button>
-					<button  class="btn btn-dark" name="acao" value='Comprar Livros'>Comprar Livros</button>
-					<button  class="btn btn-dark" name="acao" value='Vender Livros'>Vender Livros</button>
-				</div>
-			</div>	
-		</form>
-	</div>	
-	<?php
-	include_once 'footer.php';
+    <div class="container pt-5">
+        <div class="card bg-light p-5">
+            <h1 class="principal display-4 texte-center">Controle de Livros</h1>
+            <p class="lead text-center"> Este sistema faz o cadastro de livros e a sua manutenção.
+                Também permite registrar o entrada e saída de livros.</p>
+            <form action="index.php" method="POST">
+                <div class="form-group pt-4 row justify-content-center">
+                    <div class="col-sm-3">
+                        <div class="shadow  bg-white rounded">
+                            <input type="codigo" name="codigo" class="form-control" id="codigo1"
+                                aria-describedby="emailHelp" placeholder="Insira o código do livro " required>
+                        </div>
+                    </div>
+                </div>
+                <div class="class text-center pt-4">
+                    <div class="btn-group " role="group" aria-label="Toolbar com grupos de botões">
+                        <button class="btn btn-dark" name="acao" value='Incluir Livros'>Incluir Livros</button>
+                        <button class="btn btn-dark" name="acao" value='Alterar Livros'>Alterar Livros</button>
+                        <button class="btn btn-dark" name="acao" value='Excluir Livros'>Excluir Livros</button>
+                        <button class="btn btn-dark" name="acao" value='Comprar Livros'>Comprar Livros</button>
+                        <button class="btn btn-dark" name="acao" value='Vender Livros'>Vender Livros</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <?php
+	include_once '../assets/footer.php';
 	?>
 </body>
+
 </html>

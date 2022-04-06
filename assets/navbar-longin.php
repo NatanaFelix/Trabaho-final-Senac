@@ -6,18 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="./css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/navbar-login.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
-    <title>Projeto Livros</title>
+    <title>Fox Books</title>
 </head>
 <body>
 <nav class="navbar navbar-dark bg-dark">
-  <a class="navbar-brand" href="./index.php">
-    <img src="./imagens/author-149694_640.png" width="50" height="50" class="d-inline-block align-top" alt="Busca Livros">
-    Busca Livros
-  </a>
-  <a href="fechar.php"><button type="submit" class="btn btn-secondary mb-2 float-right"><i class="fas fa-angle-left pr-2"></i>Sair</button></a>
+  <a class="navbar-brand" href="#">
+    <img src="./imagens/IMG_9038.jpg" width="50" height="50" class="d-inline-block align-top" alt="">Fox Books</a> 
 </nav>    
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

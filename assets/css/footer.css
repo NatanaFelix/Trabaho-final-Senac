@@ -1,9 +1,8 @@
 footer{
-    background: #CCCCCC;
     text-align: center;
     color: white;
     position: fixed;
-    height: 60px;
+    height: 30px;
     bottom: 0;
     width: 100%;
 }

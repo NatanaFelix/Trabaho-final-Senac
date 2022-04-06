@@ -11,3 +11,8 @@ body,html{
     height: 100%; 
 }
 
+.card{
+    position:absolute;
+    padding-top: 100px;
+}
+
