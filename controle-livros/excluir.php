@@ -1,23 +1,25 @@
+<?php
+include_once '../controle-principal/restrito.php'
+?>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="./css/excluir.css">
-
 	<title>Excluir</title>
 </head>
 <body>
 <?php 
-include_once 'conexao.php';
-include_once 'navbar.php';
+include_once '../assets/navbar-principal.php';
+include_once '../controle-principal/Conexao.php';
+include_once '../controle-principal/funcoes.php';
 
-$chave = $_SESSION['codigo'];
+$chave = $_SESSION['ISBN'];
 
-$sql = "SELECT * FROM tabelalivros WHERE codigo = '$chave'";
+$sql = "SELECT * FROM livros WHERE ISBN = '$chave'";
 
  if($resultado = mysqli_query($conexao, $sql)){
  	//echo "achoou!" . '<br>';
@@ -32,7 +34,7 @@ $sql = "SELECT * FROM tabelalivros WHERE codigo = '$chave'";
  	echo $conexao->error;
  }
 
- $titulo = $campo['titulo'] ?? '';
+ 	$titulo = $campo['titulo'] ?? '';
  	$editora = $campo['editora'] ?? ''; 
  	$autor = $campo['autor'] ?? '';
  	$publicacao = $campo['publicacao'] ?? '';
@@ -51,7 +53,7 @@ if (!isset($campos['titulo'])) {
 						<div class="form-group row justify-content-center">
 							<label for="codigo2" class=" col-form-label">Código</label>
 							<div class="col-sm-3">
-								<input type="text" class="form-control" id="inputTitulo" name="codigo" value="<?php echo $chave; ?>" disabled>
+								<input type="text" class="form-control" id="inputTitulo" name="ISBN" value="<?php echo $chave; ?>" disabled>
 							</div>
 							<label for="titulo2" class=" col-form-label">Título</label>
 							<div class="col-sm-3">
@@ -97,8 +99,8 @@ if (!isset($campos['titulo'])) {
 	<div class="class text-center pt-3">
 		<a href="index.php" class="btn btn-secondary mb-2"><i class="fas fa-angle-left pr-2"></i>Voltar</button></a>
 	</div>
-<?php
-include_once 'footer.php';
-?>
+	<?php
+		include_once '../controle-principal/bootjs.php';
+	?>
 </body>
 </html>

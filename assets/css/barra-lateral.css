@@ -1,7 +1,8 @@
-li{
-    padding: 5px;
-}
-
 .nav-lateral{
     align-items: center;
+    margin-top: 30px;
+}
+
+#sub-navegacao{
+    padding-left: 30px;
 }

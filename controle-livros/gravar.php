@@ -1,3 +1,6 @@
+<?php
+include_once '../controle-principal/restrito.php'
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,11 +15,12 @@
 <body>
 
 	<?php 
-	include_once 'conexao.php';
-	include_once 'navbar.php';
+	include_once '../assets/navbar-principal.php';
+	include_once '../controle-principal/Conexao.php';
+	include_once '../controle-principal/funcoes.php';
 
 	$acao = $_SESSION['acao'];
-	$chave = $_SESSION['codigo'];
+	$chave = $_SESSION['ISBN'];
 
 	$titulo = $_POST['titulo'] ?? '';
 	$editora = $_POST['editora'] ?? ''; 
@@ -28,63 +32,37 @@
 
 	if ($acao == 'Incluir Livros') {
 	// fazer insert na tabela livro	
-	$sql = "INSERT INTO tabelalivros (codigo,titulo,editora,autor,publicacao,quantidade) 
+	$sql = "INSERT INTO livros (ISBN,titulo,editora,autor,publicacao,quantidade) 
 	VALUES ('$chave','$titulo','$editora','$autor','$publicacao','$quantidade')";
 	//echo $sql;
 	  if(mysqli_query($conexao, $sql)){
-	  	echo "<div class='alert alert-success' role='alert'> Item incluido com sucesso! </div>";
+	  	echo "<div class='alert alert-success' role='alert'> Livro incluido com sucesso! </div>";
 	  	}else{
-	 		echo "<div class='alert alert-danger' role='alert'> O item não pode ser incluido. <br> </div>";
+	 		echo "<div class='alert alert-danger' role='alert'> O livro não pode ser incluido. <br> </div>";
 	 		
 	  	}
 	}
 	
 	if ($acao == 'Alterar Livros') {
 	// fazer update na tabela livro
-	$sql = "UPDATE `tabelalivros` SET `codigo`='$chave',`titulo`='$titulo',`editora`='$editora',`autor`='$autor',`publicacao`='$publicacao',`quantidade`='$quantidade' 
-	WHERE codigo = '$chave'";
+	$sql = "UPDATE `livros` SET `ISBN`='$chave',`titulo`='$titulo',`editora`='$editora',`autor`='$autor',`publicacao`='$publicacao',`quantidade`='$quantidade' 
+	WHERE ISBN = '$chave'";
 		if (mysqli_query($conexao,$sql)) {
-			echo "<div class='alert alert-success' role='alert'> Item alterado com sucesso! </div>";
+			echo "<div class='alert alert-success' role='alert'> Livro alterado com sucesso! </div>";
 		}else{
-			echo "<div class='alert alert-danger' role='alert'> O item não pode ser alterado. <br> </div>";
+			echo "<div class='alert alert-danger' role='alert'> O livro não pode ser alterado. <br> </div>";
 			}
 		}
 	if ($acao == 'Excluir Livros') {
 	// fazer delete na tabela livro
-	$sql = "DELETE FROM `tabelalivros` WHERE codigo = '$chave'";
+	$sql = "DELETE FROM `livros` WHERE ISBN = '$chave'";
 		if(mysqli_query($conexao, $sql)){
-			echo "<div class='alert alert-success' role='alert'> Item excluido com sucesso! </div>";	
+			echo "<div class='alert alert-success' role='alert'> Livro excluido com sucesso! </div>";	
 		}else{
-			echo "<div class='alert alert-danger' role='alert'> O item não pode ser excluido. <br> </div>";
+			echo "<div class='alert alert-danger' role='alert'> O livro não pode ser excluido. <br> </div>";
 		}
 	}
-	
-	if ($acao == 'Comprar Livros') {
-	// adicionar da quantidade
-	 $quantidade = $_SESSION['quantidade'];
-	 $entrada = $_POST['entrada'];
-		$sql = "UPDATE tabelalivros SET quantidade = ('$quantidade' + '$entrada') WHERE codigo = '$chave'";
-		if(mysqli_query($conexao, $sql)){
-		echo "<div class='alert alert-success' role='alert'> Entrada de item feita com sucesso! </div>";
-		}else{
-		echo "<div class='alert alert-danger' role='alert'> Entrada de item não pode ser feita </div>";
-	}
-
-	}
-	if ($acao == 'Vender Livros') {
-	// subitrair da quantidade
-		$quantidade = $_SESSION['quantidade'];
-		$saida = $_POST['saida'];
-		$sql = "UPDATE tabelalivros SET quantidade = ('$quantidade' - '$saida') WHERE codigo = '$chave'";
-		if(mysqli_query($conexao, $sql)){
-			echo "<div class='alert alert-success' role='alert'> Saída de item feita com sucesso! </div>";
-		}else{
-			echo "<div class='alert alert-danger' role='alert'> Saída de item não pode ser feita </div>";
-		}
-	}
-
 	?>
-
 	<br>
 	<br>
 
@@ -96,7 +74,7 @@
 		<a href="index.php" class="btn btn-secondary mb-2"><i class="fas fa-angle-left pr-2"></i>Voltar</button></a>
 	</div>
 	<?php
-		include_once 'footer.php';
+		include_once '../controle-principal/bootjs.php';
 	?>
 </body>
 </html>

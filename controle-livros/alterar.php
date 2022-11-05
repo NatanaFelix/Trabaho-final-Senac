@@ -1,3 +1,6 @@
+<?php
+include_once '../controle-principal/restrito.php'
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,12 +15,13 @@
 </head>
 <body>
 <?php 
-include_once 'conexao.php';
-include_once 'navbar.php';
+include_once '../assets/navbar-principal.php';
+include_once '../controle-principal/Conexao.php';
+include_once '../controle-principal/funcoes.php';
 
-$chave = $_SESSION['codigo'];
+$chave = $_SESSION['ISBN'];
 
-$sql = "SELECT * FROM tabelalivros WHERE codigo = '$chave'";
+$sql = "SELECT * FROM livros WHERE ISBN = '$chave'";
 
 if($resultado = mysqli_query($conexao, $sql)){
 	//echo "achoou!" . '<br>';
@@ -41,9 +45,9 @@ if(isset($campos['titulo'])){
 				<div class="card-body">
 					<h4 class="display-4 text-center ">Alterar Livros</h4>
 					<div class="form-group row justify-content-center">
-						<label for="codigo2" class=" col-form-label">Código</label>
+						<label for="codigo2" class=" col-form-label">ISBN</label>
 						<div class="col-sm-3">
-							<input type="text" class="form-control" id="inputTitulo" name="codigo" value="<?php echo $chave; ?>" disabled>
+							<input type="text" class="form-control" id="inputTitulo" name="ISBN" value="<?php echo $chave; ?>" disabled>
 						</div>
 						<label for="titulo2" class=" col-form-label">Título</label>
 						<div class="col-sm-3">
@@ -87,7 +91,7 @@ if(isset($campos['titulo'])){
 	</div>
 
 	<?php
-		include_once 'footer.php';
+		include_once '../controle-principal/bootjs.php';
 	?>
 
 </body>
